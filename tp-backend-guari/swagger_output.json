@@ -1,0 +1,251 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API - Trabajo Práctico Backend/Frontend",
+    "description": "API para gestión de Socios, Transacciones, Empleados y Publicaciones",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Socios",
+      "description": "Operaciones con socios"
+    },
+    {
+      "name": "Transacciones",
+      "description": "Operaciones con transacciones/log"
+    },
+    {
+      "name": "Empleados",
+      "description": "Operaciones con empleados"
+    },
+    {
+      "name": "Publicaciones",
+      "description": "Operaciones con publicaciones"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/api/socios/": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nombre": {
+                  "example": "any"
+                },
+                "apellido": {
+                  "example": "any"
+                },
+                "foto": {
+                  "example": "any"
+                },
+                "dni": {
+                  "example": "any"
+                },
+                "numeroSocio": {
+                  "example": "any"
+                },
+                "activo": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/socios/{id}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/socios/activos": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Socio": {
+      "type": "object",
+      "properties": {
+        "nombre": {
+          "type": "string",
+          "example": "Juan"
+        },
+        "apellido": {
+          "type": "string",
+          "example": "Pérez"
+        },
+        "foto": {
+          "type": "string",
+          "example": "data:image/png;base64,iVBORw0KGgo..."
+        },
+        "dni": {
+          "type": "string",
+          "example": "12345678"
+        },
+        "numeroSocio": {
+          "type": "number",
+          "example": 1001
+        },
+        "activo": {
+          "type": "boolean",
+          "example": true
+        }
+      }
+    },
+    "Transaccion": {
+      "type": "object",
+      "properties": {
+        "IdiomaOrigen": {
+          "type": "string",
+          "example": "es"
+        },
+        "TextoOrigen": {
+          "type": "number",
+          "example": 10
+        },
+        "IdiomaDestino": {
+          "type": "string",
+          "example": "en"
+        },
+        "TextoDestino": {
+          "type": "number",
+          "example": 10
+        },
+        "emailCliente": {
+          "type": "string",
+          "example": "cliente@email.com"
+        }
+      }
+    },
+    "Empleado": {
+      "type": "object",
+      "properties": {
+        "apellido": {
+          "type": "string",
+          "example": "García"
+        },
+        "nombre": {
+          "type": "string",
+          "example": "María"
+        },
+        "dni": {
+          "type": "string",
+          "example": "87654321"
+        },
+        "email": {
+          "type": "string",
+          "example": "maria@empresa.com"
+        }
+      }
+    },
+    "Publicacion": {
+      "type": "object",
+      "properties": {
+        "Titulo": {
+          "type": "string",
+          "example": "Mi primera publicación"
+        },
+        "Contenido": {
+          "type": "string",
+          "example": "Contenido de ejemplo..."
+        },
+        "ImagenAsociada": {
+          "type": "string",
+          "example": "data:image/png;base64,..."
+        },
+        "fechaPublicacion": {
+          "type": "string",
+          "example": "2024-06-14"
+        },
+        "vigente": {
+          "type": "boolean",
+          "example": true
+        },
+        "empleadoId": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    }
+  }
+}
