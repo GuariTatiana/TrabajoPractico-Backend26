@@ -5,8 +5,16 @@ const transaccionCtrl = {};
 // 1. Dar de alta una Transacción (POST)
 transaccionCtrl.createTransaccion = async (req, res) => {
     try {
-        await Transaccion.create(req.body);
-        res.json({ status: '1', msg: 'Transacción guardada.' });
+        const {IdiomaOrigen, TextoOrigen, IdiomaDestino, TextoDestino, emailCliente} = 
+        req.body;
+        await Transaccion.create({
+            IdiomaOrigen,
+            TextoOrigen,
+            IdiomaDestino,
+            TextoDestino,
+            emailCliente
+        });
+        res.json({ status: '1', msg: 'Transacción guardada.', data: { IdiomaOrigen, TextoOrigen, IdiomaDestino, TextoDestino, emailCliente } });
     } catch (error) {
         res.status(400).json({ status: '0', msg: 'Error procesando operacion.' });
     }

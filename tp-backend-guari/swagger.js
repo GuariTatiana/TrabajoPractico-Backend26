@@ -35,7 +35,8 @@ const doc = {
             apellido: 'García',
             nombre: 'María',
             dni: '87654321',
-            email: 'maria@empresa.com'
+            email: 'maria@empresa.com',
+            activo: true
         },
         Publicacion: {
             Titulo: 'Mi primera publicación',

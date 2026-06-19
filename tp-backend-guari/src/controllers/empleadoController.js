@@ -9,10 +9,26 @@ const empleadoCtrl = {};
 // POST - Dar de alta un Empleado
 empleadoCtrl.createEmpleado = async (req, res) => {
     try {
-        await Empleado.create(req.body);
-        res.json({ status: '1', msg: 'Empleado guardado.' });
+        const { apellido, nombre, dni, email } = req.body;
+
+        const nuevoEmpleado = await Empleado.create({
+            apellido,
+            nombre,
+            dni,
+            email
+        });
+        
+        res.json({ status: '1', msg: 'Empleado guardado.', data: nuevoEmpleado });
+        //await Empleado.create(req.body);
+        //res.json({ status: '1', msg: 'Empleado guardado.' });
+         // Validar campos obligatorios
+        
     } catch (error) {
-        res.status(400).json({ status: '0', msg: 'Error procesando operacion.' });
+        res.status(400).json({ 
+            status: '0', 
+            msg: 'Error procesando operacion.',
+            error: error.message 
+        });
     }
 };
 
@@ -49,10 +65,10 @@ empleadoCtrl.createPublicacion = async (req, res) => {
         // Verificar que el empleado existe
         const empleado = await Empleado.findByPk(empleadoId);
         if (!empleado) {
-            return res.status(404).json({ status: '0', msg: 'Empleado no encontrado.' });
+            return res.status(404).json({ status: '0', msg: 'Empleado no encontrado.'});
         }
         
-        await Publicacion.create({
+        const nuevaPublicacion = await Publicacion.create({
             Titulo,
             Contenido,
             ImagenAsociada,
@@ -61,13 +77,13 @@ empleadoCtrl.createPublicacion = async (req, res) => {
             empleadoId
         });
         
-        res.json({ status: '1', msg: 'Publicación guardada.' });
+        res.json({ status: '1', msg: 'Publicación guardada.', data: { id: nuevaPublicacion.id } });
     } catch (error) {
         res.status(400).json({ status: '0', msg: 'Error procesando operacion.' });
     }
 };
 
-// GET - Recuperar TODAS las publicaciones (incluyendo empleado)
+// GET - Recuperar TODAS las publicaciones (incluyendo informacion del empleado)
 empleadoCtrl.getPublicaciones = async (req, res) => {
     try {
         const publicaciones = await Publicacion.findAll({
@@ -75,7 +91,14 @@ empleadoCtrl.getPublicaciones = async (req, res) => {
         });
         res.json(publicaciones);
     } catch (error) {
-        res.status(500).json({ status: '0', msg: 'Error al obtener las publicaciones.' });
+        console.log('ERROR COMPLETO:', error);
+        console.log('ERROR MESSAGE:', error.message);
+        res.status(500).json({ 
+            status: '0', 
+            msg: 'Error al obtener las publicaciones.',
+            error: error.message 
+         });
+
     }
 };
 

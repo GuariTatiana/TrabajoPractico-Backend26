@@ -144,6 +144,32 @@
     "/api/transacciones/": {
       "post": {
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "IdiomaOrigen": {
+                  "example": "any"
+                },
+                "textoOrigen": {
+                  "example": "any"
+                },
+                "IdiomaDestino": {
+                  "example": "any"
+                },
+                "textoDestino": {
+                  "example": "any"
+                },
+                "emailCliente": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -216,6 +242,29 @@
     "/api/empleados/": {
       "post": {
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "apellido": {
+                  "example": "any"
+                },
+                "nombre": {
+                  "example": "any"
+                },
+                "dni": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -456,6 +505,10 @@
         "email": {
           "type": "string",
           "example": "maria@empresa.com"
+        },
+        "activo": {
+          "type": "boolean",
+          "example": true
         }
       }
     },
