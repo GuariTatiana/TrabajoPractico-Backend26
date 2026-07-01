@@ -1,0 +1,47 @@
+<p>historial-transacciones works!</p>
+
+<div class="container mt-4">
+
+  <h2>Historial de Transacciones</h2>
+
+  <input
+    type="text"
+    class="form-control mb-2"
+    [(ngModel)]="origen"
+    placeholder="Idioma origen"
+  >
+
+  <input
+    type="text"
+    class="form-control mb-2"
+    [(ngModel)]="destino"
+    placeholder="Idioma destino"
+  >
+
+  <button
+    class="btn btn-success me-2"
+    (click)="recuperarTodos()"
+  >
+    RECUPERAR TODOS
+  </button>
+
+  <button
+    class="btn btn-warning"
+    (click)="recuperarPorFiltro()"
+  >
+    RECUPERAR POR FILTRO
+  </button>
+
+  <ul class="list-group mt-4">
+    <li
+      *ngFor="let t of transacciones"
+      class="list-group-item"
+    >
+      <strong>{{ t.TextoOrigen }}</strong>
+      →
+      <strong>{{ t.TextoDestino }}</strong>
+      ({{ t.IdiomaOrigen }} → {{ t.IdiomaDestino }})
+    </li>
+  </ul>
+
+</div>

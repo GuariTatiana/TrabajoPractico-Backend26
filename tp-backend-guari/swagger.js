@@ -13,7 +13,8 @@ const doc = {
         { name: 'Socios', description: 'Operaciones con socios' },
         { name: 'Transacciones', description: 'Operaciones con transacciones/log' },
         { name: 'Empleados', description: 'Operaciones con empleados' },
-        { name: 'Publicaciones', description: 'Operaciones con publicaciones' }
+        { name: 'Publicaciones', description: 'Operaciones con publicaciones' },
+        {name: 'Locales', description: 'Operaciones con locales'}
     ],
     definitions: {
         Socio: {
@@ -45,6 +46,11 @@ const doc = {
             fechaPublicacion: '2024-06-14',
             vigente: true,
             empleadoId: 1
+        },
+        Local: {
+            numerolocal: '1',
+            superficie: '100',
+            activo: true
         }
     }
 };

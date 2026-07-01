@@ -1,0 +1,45 @@
+<p>transaccion works!</p>
+<h3>Traductor de Texto</h3>
+<div class="container mt-4">
+
+  <input
+    type="text"
+    class="form-control mb-2"
+    [(ngModel)]="textoOrigen"
+    placeholder="Ingrese texto"
+  >
+
+  <input
+    type="text"
+    class="form-control mb-2"
+    [(ngModel)]="idiomaOrigen"
+    placeholder="Idioma origen (es, en, fr)"
+  >
+
+  <input
+    type="text"
+    class="form-control mb-2"
+    [(ngModel)]="idiomaDestino"
+    placeholder="Idioma destino (es, en, fr)"
+  >
+
+  <input
+    type="email"
+    class="form-control mb-2"
+    [(ngModel)]="emailCliente"
+    placeholder="Ingrese email"
+  >
+
+  <button
+    class="btn btn-primary"
+    (click)="traducirTexto()"
+  >
+    TRADUCIR
+  </button>
+
+  <div *ngIf="textoDestino" class="mt-4">
+    <h4>Resultado:</h4>
+    <p>{{ textoDestino }}</p>
+  </div>
+
+</div>

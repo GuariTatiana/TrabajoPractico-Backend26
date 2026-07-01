@@ -23,6 +23,10 @@
     {
       "name": "Publicaciones",
       "description": "Operaciones con publicaciones"
+    },
+    {
+      "name": "Locales",
+      "description": "Operaciones con locales"
     }
   ],
   "schemes": [
@@ -56,6 +60,9 @@
                 },
                 "activo": {
                   "example": "any"
+                },
+                "localId": {
+                  "example": "any"
                 }
               }
             }
@@ -67,6 +74,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       },
@@ -154,13 +164,13 @@
                 "IdiomaOrigen": {
                   "example": "any"
                 },
-                "textoOrigen": {
+                "TextoOrigen": {
                   "example": "any"
                 },
                 "IdiomaDestino": {
                   "example": "any"
                 },
-                "textoDestino": {
+                "TextoDestino": {
                   "example": "any"
                 },
                 "emailCliente": {
@@ -430,6 +440,50 @@
           }
         }
       }
+    },
+    "/api/locales/": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "numerolocal": {
+                  "example": "any"
+                },
+                "superficie": {
+                  "example": "any"
+                },
+                "activo": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -538,6 +592,23 @@
         "empleadoId": {
           "type": "number",
           "example": 1
+        }
+      }
+    },
+    "Local": {
+      "type": "object",
+      "properties": {
+        "numerolocal": {
+          "type": "string",
+          "example": "1"
+        },
+        "superficie": {
+          "type": "string",
+          "example": "100"
+        },
+        "activo": {
+          "type": "boolean",
+          "example": true
         }
       }
     }

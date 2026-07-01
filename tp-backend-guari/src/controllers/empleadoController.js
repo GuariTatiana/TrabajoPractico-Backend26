@@ -1,5 +1,6 @@
-const Empleado = require('../models/Empleado');
-const Publicacion = require('../models/Publicacion');
+//const Empleado = require('../models/Empleado');
+//const Publicacion = require('../models/Publicacion');
+const { Empleado, Publicacion } = require('../models/index3');
 const { Op } = require('sequelize');
 
 const empleadoCtrl = {};

@@ -57,4 +57,33 @@ transaccionCtrl.getTransaccionesByIdiomas = async (req, res) => {
     }
 };
 
+const axios = require('axios');
+transaccionCtrl.traducirTexto = async (req, res) => {
+    try {
+        const { texto, origen, destino } = req.body;
+
+        const response = await axios.post(
+            //'https://libretranslate.com/translate',
+            'https://translate.fedilab.app/translate',
+            {
+                q: texto,
+                source: origen,
+                target: destino,
+                format: 'text'
+            }
+        );
+
+        res.status(200).json({
+            translatedText: response.data.translatedText
+        });
+
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({
+            status: '0',
+            msg: 'Error al traducir'
+        });
+    }
+};
+
 module.exports = transaccionCtrl;

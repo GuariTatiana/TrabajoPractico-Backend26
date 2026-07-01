@@ -2,21 +2,30 @@ const express = require('express');
 const cors = require('cors'); 
  
 const sequelize = require('./config/database'); 
+require('./src/models'); // Importar modelos y asociaciones
 var app = express(); 
  
 //middlewares 
 app.use(express.json()); 
-app.use(cors({origin: 'http://localhost:4200'}));
+app.use(cors({
+    origin: [
+        'http://localhost:4200',
+        'http://localhost:40476',
+        'http://localhost:31697'
+    ]
+}));
 
 //importamos rutas de socios
 const socioRoutes = require('./src/routes/socioRoutes');
 const transaccionRoutes = require('./src/routes/transaccionRoutes');
 const empleadoRoutes = require('./src/routes/empleadoRoutes');
+const localRoutes = require('./src/routes/localRoutes');
 
 //usamos rutas de socios
 app.use('/api/socios', socioRoutes);
 app.use('/api/transacciones', transaccionRoutes);
 app.use('/api/empleados', empleadoRoutes);
+app.use('/api/locales', localRoutes);
 
 // Documentación Swagger
 const swaggerUi = require('swagger-ui-express');
@@ -29,7 +38,7 @@ app.set('port', process.env.PORT || 3000);
 
  
 //sincronizamos base de datos y levantamos servidor
-sequelize.sync({ force: false })  
+sequelize.sync({ force: false})  
   .then(() => { 
     console.log('Tablas de PostgreSQL sincronizadas'); 
      

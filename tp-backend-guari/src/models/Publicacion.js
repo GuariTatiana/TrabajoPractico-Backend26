@@ -14,10 +14,10 @@ const Publicacion = sequelize.define('Publicacion', {
 });
 
 // Relación: Una Publicación pertenece a un Empleado
-Publicacion.belongsTo(Empleado, { as: 'empleado', foreignKey: 'empleadoId' });
+//Publicacion.belongsTo(Empleado, { as: 'empleado', foreignKey: 'empleadoId' });
 
 // Relación: Un Empleado tiene muchas Publicaciones
-Empleado.hasMany(Publicacion, { as: 'publicaciones', foreignKey: 'empleadoId' });
+//Empleado.hasMany(Publicacion, { as: 'publicaciones', foreignKey: 'empleadoId' });
 
 
 module.exports = Publicacion;

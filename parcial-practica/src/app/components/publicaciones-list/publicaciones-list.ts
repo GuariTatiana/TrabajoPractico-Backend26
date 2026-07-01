@@ -1,0 +1,9 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-publicaciones-list',
+  imports: [],
+  templateUrl: './publicaciones-list.html',
+  styleUrl: './publicaciones-list.css',
+})
+export class PublicacionesList {}

@@ -5,9 +5,9 @@ const Transaccion = sequelize.define('Transaccion', {
   // Sequelize crea un campo 'id' autoincrementable automáticamente, no hace falta ponerlo 
   
     IdiomaOrigen: { type: DataTypes.STRING, allowNull: false },
-    TextoOrigen: { type: DataTypes.INTEGER, allowNull: false },
+    TextoOrigen: { type: DataTypes.STRING, allowNull: false },
     IdiomaDestino: { type: DataTypes.STRING, allowNull: false },
-    TextoDestino: { type: DataTypes.INTEGER, allowNull: false },
+    TextoDestino: { type: DataTypes.STRING, allowNull: false },
     emailCliente: { type: DataTypes.STRING, allowNull: false }
 }, { 
   tableName: 'transacciones', // Nombre de la tabla en minúsculas y plural 
