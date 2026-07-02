@@ -9,5 +9,6 @@ export const routes: Routes = [
     { path:'historial', component:HistorialTransaccionesComponent },
     { path:'publicaciones', component:PublicacionesList },
     { path:'publicaciones/nueva', component:PublicacionesForm },
-    { path:'publicaciones/editar/:id', component:PublicacionesForm } 
+    { path:'publicaciones/editar/:id', component:PublicacionesForm },
+    { path: 'nueva-publicacion', component:PublicacionesForm }
 ];

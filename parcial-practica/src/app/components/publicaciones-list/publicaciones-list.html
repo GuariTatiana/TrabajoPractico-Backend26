@@ -1,1 +1,48 @@
 <p>publicaciones-list works!</p>
+<h2>Publicaciones</h2>
+
+<input
+  type="text"
+  [(ngModel)]="titulo"
+  placeholder="Buscar por título"
+/>
+
+<select [(ngModel)]="vigente">
+  <option [ngValue]="true">Vigente</option>
+  <option [ngValue]="false">No vigente</option>
+</select>
+
+<button (click)="recuperarTodos()">
+  RECUPERAR TODOS
+</button>
+
+<button (click)="recuperarPorFiltro()">
+  RECUPERAR POR FILTRO
+</button>
+
+<hr>
+
+<ul>
+  <li *ngFor="let p of publicaciones">
+
+    <strong>{{ p.Titulo }}</strong>
+    <br>
+
+    {{ p.Contenido }}
+    <br>
+
+    Fecha: {{ p.fechaPublicacion }}
+    <br>
+
+    Vigente: {{ p.vigente }}
+    <br>
+
+    Empleado ID: {{ p.empleadoId }}
+    <br>
+
+    <button (click)="eliminarPublicacion(p._id!)">
+      ELIMINAR
+    </button>
+
+  </li>
+</ul>

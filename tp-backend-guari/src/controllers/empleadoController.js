@@ -88,7 +88,7 @@ empleadoCtrl.createPublicacion = async (req, res) => {
 empleadoCtrl.getPublicaciones = async (req, res) => {
     try {
         const publicaciones = await Publicacion.findAll({
-            include: [{ model: Empleado, as: 'empleado' }]
+            //include: [{ model: Empleado, as: 'empleado' }]
         });
         res.json(publicaciones);
     } catch (error) {

@@ -1,1 +1,37 @@
 <p>publicaciones-form works!</p>
+<h2>Nueva Publicación</h2>
+
+<input
+  [(ngModel)]="publicacion.Titulo"
+  placeholder="Título"
+/>
+
+<input
+  [(ngModel)]="publicacion.Contenido"
+  placeholder="Contenido"
+/>
+
+<input
+  [(ngModel)]="publicacion.ImagenAsociada"
+  placeholder="Imagen Base64"
+/>
+
+<input
+  [(ngModel)]="publicacion.fechaPublicacion"
+  placeholder="Fecha"
+/>
+
+<select [(ngModel)]="publicacion.vigente">
+  <option [ngValue]="true">Vigente</option>
+  <option [ngValue]="false">No vigente</option>
+</select>
+
+<input
+  type="number"
+  [(ngModel)]="publicacion.empleadoId"
+  placeholder="ID Empleado"
+/>
+
+<button (click)="guardarPublicacion()">
+  GUARDAR
+</button>
